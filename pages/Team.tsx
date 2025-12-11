@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useData } from '../contexts/DataContext';
-import { Calendar } from 'lucide-react';
+import { Calendar, GraduationCap } from 'lucide-react';
+import SmartImage from '../components/SmartImage';
 
 const Team: React.FC = () => {
   const { team, clinicInfo } = useData();
@@ -20,7 +22,11 @@ const Team: React.FC = () => {
           {team.map((member) => (
             <div key={member.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-500 flex flex-col h-full group">
               <div className="h-96 overflow-hidden relative">
-                <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" />
+                <SmartImage 
+                  src={member.imageUrl} 
+                  alt={member.name} 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-100"></div>
                 <div className="absolute bottom-0 left-0 w-full p-8">
                     <h3 className="text-2xl font-bold text-white mb-1">{member.name}</h3>
@@ -31,7 +37,16 @@ const Team: React.FC = () => {
                 <p className="text-slate-600 mb-8 leading-relaxed flex-grow text-lg">
                   {member.bio}
                 </p>
-                <div className="mt-auto pt-6 border-t border-slate-100">
+                <div className="mt-auto pt-6 border-t border-slate-100 space-y-3">
+                    {member.cv && (
+                      <Link
+                        to={`/team/${member.id}`}
+                        className="w-full bg-slate-100 hover:bg-slate-200 text-slate-900 font-medium py-3 rounded-xl transition flex items-center justify-center gap-2"
+                      >
+                        <GraduationCap size={18} />
+                        Voir le parcours
+                      </Link>
+                    )}
                     <a 
                         href={clinicInfo.tipawLink}
                         target="_blank"

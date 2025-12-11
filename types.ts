@@ -30,6 +30,12 @@ export interface TeamMember {
   role: string;
   bio: string;
   imageUrl: string;
+  cv?: {
+    education: string[];
+    experience: string[];
+    specializations: string[];
+    certifications?: string[];
+  };
 }
 
 export interface BlogPost {

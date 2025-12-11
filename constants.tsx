@@ -153,25 +153,91 @@ export const DEFAULT_SERVICES: Service[] = [
 
 export const DEFAULT_TEAM: TeamMember[] = [
   {
-    id: "fred-jonckers",
+    id: "frederic-jonckers",
     name: "Dr. Frédéric Jonckers",
-    role: "Vétérinaire Associé",
-    bio: "Fondateur de la clinique, passionné par la chirurgie des tissus mous et la médecine interne depuis plus de 25 ans.",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg"
+    role: "Vétérinaire Fondateur",
+    bio: "Fondateur de la clinique, il apporte plus de 25 ans d'expérience en médecine vétérinaire. Passionné par la chirurgie des tissus mous et la médecine interne, il assure la direction médicale de l'établissement.",
+    imageUrl: "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg",
+    cv: {
+      education: [
+        "Doctorat en Médecine Vétérinaire - Université de Liège (1998)",
+        "Formation complémentaire en Chirurgie des Tissus Mous - École Vétérinaire de Lyon (2001)"
+      ],
+      experience: [
+        "Fondateur et Directeur - Clinique Vétérinaire Jonckers-Thoumsin (1999-présent)",
+        "Vétérinaire praticien - Clinique Vétérinaire de Mons (1998-1999)",
+        "Stage de fin d'études - CHV Frégis, Paris (1998)"
+      ],
+      specializations: [
+        "Chirurgie des tissus mous",
+        "Médecine interne",
+        "Urgences vétérinaires",
+        "Gestion d'établissement vétérinaire"
+      ],
+      certifications: [
+        "Membre de l'Ordre des Médecins Vétérinaires de Belgique",
+        "Formation continue en anesthésie moderne (2020)",
+        "Certification en gestion de la douleur (2019)"
+      ]
+    }
   },
   {
     id: "laurence-thoumsin",
     name: "Dr. Laurence Thoumsin",
     role: "Vétérinaire Associée",
-    bio: "Spécialisée en imagerie médicale et en dermatologie, elle assure des diagnostics précis avec douceur.",
-    imageUrl: "https://cdn.pixabay.com/photo/2020/04/18/08/33/doctor-5058699_640.jpg"
+    bio: "Spécialisée en imagerie médicale et en dermatologie, elle assure des diagnostics précis avec douceur. Son expertise en échographie et radiologie permet des diagnostics de pointe.",
+    imageUrl: "https://cdn.pixabay.com/photo/2020/04/18/08/33/doctor-5058699_640.jpg",
+    cv: {
+      education: [
+        "Doctorat en Médecine Vétérinaire - Université de Liège (2005)",
+        "Spécialisation en Imagerie Médicale Vétérinaire - École Vétérinaire d'Alfort (2007)",
+        "Formation en Dermatologie Vétérinaire - Université de Gand (2010)"
+      ],
+      experience: [
+        "Vétérinaire Associée - Clinique Vétérinaire Jonckers-Thoumsin (2008-présent)",
+        "Vétérinaire spécialisée - Centre d'Imagerie Vétérinaire de Bruxelles (2007-2008)",
+        "Assistante vétérinaire - Clinique Universitaire de Liège (2005-2007)"
+      ],
+      specializations: [
+        "Imagerie médicale (échographie, radiologie)",
+        "Dermatologie vétérinaire",
+        "Médecine préventive",
+        "Diagnostic par l'image"
+      ],
+      certifications: [
+        "Membre de l'Ordre des Médecins Vétérinaires de Belgique",
+        "Certification européenne en échographie vétérinaire (2015)",
+        "Formation avancée en dermatologie allergique (2018)"
+      ]
+    }
   },
   {
     id: "sophie-martin",
     name: "Sophie Martin",
     role: "Assistante Vétérinaire (ASV)",
-    bio: "Le sourire à l'accueil et la douceur au chenil. Sophie veille au confort de vos animaux hospitalisés.",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_640.jpg"
+    bio: "Le sourire à l'accueil et la douceur au chenil. Sophie veille au confort de vos animaux hospitalisés et assiste nos vétérinaires dans tous les soins quotidiens.",
+    imageUrl: "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_640.jpg",
+    cv: {
+      education: [
+        "Certificat d'Assistante Vétérinaire - Institut de Formation Vétérinaire de Namur (2015)",
+        "Formation en soins aux animaux - Centre de Formation Professionnelle de Charleroi (2014)"
+      ],
+      experience: [
+        "Assistante Vétérinaire - Clinique Vétérinaire Jonckers-Thoumsin (2016-présent)",
+        "Stagiaire ASV - Clinique Vétérinaire de Soignies (2015-2016)"
+      ],
+      specializations: [
+        "Soins post-opératoires",
+        "Gestion de l'hospitalisation",
+        "Assistance chirurgicale",
+        "Accueil et conseil clientèle"
+      ],
+      certifications: [
+        "Certificat d'Assistante Vétérinaire reconnu",
+        "Formation aux premiers secours animaliers (2020)",
+        "Formation en hygiène et stérilisation (2019)"
+      ]
+    }
   }
 ];
 

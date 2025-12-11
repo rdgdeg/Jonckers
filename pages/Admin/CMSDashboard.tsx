@@ -469,6 +469,94 @@ const CMSDashboard: React.FC = () => {
                     rows={3}
                     placeholder="Biographie"
                   />
+                  
+                  {/* CV Section */}
+                  <div className="border-t pt-4 mt-4">
+                    <h5 className="font-medium text-gray-900 mb-3">CV et Parcours</h5>
+                    
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Formation (une par ligne)</label>
+                        <textarea
+                          value={member.cv?.education?.join('\n') || ''}
+                          onChange={(e) => updateTeamMember(member.id, { 
+                            ...member, 
+                            cv: { 
+                              ...member.cv, 
+                              education: e.target.value.split('\n').filter(line => line.trim()),
+                              experience: member.cv?.experience || [],
+                              specializations: member.cv?.specializations || [],
+                              certifications: member.cv?.certifications || []
+                            } 
+                          })}
+                          className="w-full border border-gray-200 rounded px-3 py-2 text-sm"
+                          rows={3}
+                          placeholder="Ex: Doctorat en Médecine Vétérinaire - Université de Liège (1998)"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Expérience (une par ligne)</label>
+                        <textarea
+                          value={member.cv?.experience?.join('\n') || ''}
+                          onChange={(e) => updateTeamMember(member.id, { 
+                            ...member, 
+                            cv: { 
+                              ...member.cv, 
+                              education: member.cv?.education || [],
+                              experience: e.target.value.split('\n').filter(line => line.trim()),
+                              specializations: member.cv?.specializations || [],
+                              certifications: member.cv?.certifications || []
+                            } 
+                          })}
+                          className="w-full border border-gray-200 rounded px-3 py-2 text-sm"
+                          rows={3}
+                          placeholder="Ex: Fondateur - Clinique Vétérinaire (1999-présent)"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Spécialisations (une par ligne)</label>
+                        <textarea
+                          value={member.cv?.specializations?.join('\n') || ''}
+                          onChange={(e) => updateTeamMember(member.id, { 
+                            ...member, 
+                            cv: { 
+                              ...member.cv, 
+                              education: member.cv?.education || [],
+                              experience: member.cv?.experience || [],
+                              specializations: e.target.value.split('\n').filter(line => line.trim()),
+                              certifications: member.cv?.certifications || []
+                            } 
+                          })}
+                          className="w-full border border-gray-200 rounded px-3 py-2 text-sm"
+                          rows={2}
+                          placeholder="Ex: Chirurgie des tissus mous"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Certifications (une par ligne)</label>
+                        <textarea
+                          value={member.cv?.certifications?.join('\n') || ''}
+                          onChange={(e) => updateTeamMember(member.id, { 
+                            ...member, 
+                            cv: { 
+                              ...member.cv, 
+                              education: member.cv?.education || [],
+                              experience: member.cv?.experience || [],
+                              specializations: member.cv?.specializations || [],
+                              certifications: e.target.value.split('\n').filter(line => line.trim())
+                            } 
+                          })}
+                          className="w-full border border-gray-200 rounded px-3 py-2 text-sm"
+                          rows={2}
+                          placeholder="Ex: Membre de l'Ordre des Médecins Vétérinaires"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
                   <div className="flex gap-2">
                     <button
                       onClick={() => {

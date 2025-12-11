@@ -94,8 +94,8 @@ const Home: React.FC = () => {
                  <img src="https://cdn.pixabay.com/photo/2018/05/11/08/11/dog-3389729_640.jpg" alt="Consultation" className="w-full h-full object-cover" />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                  <div className="absolute bottom-8 left-8 text-white">
-                    <p className="font-bold text-2xl">Dr. Jonckers</p>
-                    <p className="opacity-90">Vétérinaire fondatrice</p>
+                    <p className="font-bold text-2xl">Dr. Frédéric Jonckers</p>
+                    <p className="opacity-90">Vétérinaire fondateur</p>
                  </div>
              </div>
              {/* Decorative pattern */}

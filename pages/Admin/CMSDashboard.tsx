@@ -4,7 +4,6 @@ import { useData } from '../../contexts/DataContext';
 import { 
   LogOut, 
   Settings, 
-  Users, 
   FileText, 
   ShoppingBag, 
   BarChart3,
@@ -13,31 +12,22 @@ import {
   Trash2,
   Save,
   X,
-  Upload,
-  Eye,
-  Calendar,
-  Phone,
-  Mail,
-  MapPin,
   Package,
   Image,
-  Globe,
   CheckCircle,
   AlertCircle,
   Home
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import MediaManager from '../../components/MediaManager';
+import ImageUpload from '../../components/ImageUpload';
 
 const CMSDashboard: React.FC = () => {
   const { 
     clinicInfo, updateClinicInfo,
-    services, updateService,
     team, updateTeamMember, addTeamMember, deleteTeamMember,
-    blogPosts, updateBlogPost, addBlogPost, deleteBlogPost,
     products, updateProduct, addProduct, deleteProduct,
     orders, updateOrder,
-    pages, updatePage, addPage, deletePage,
-    media, addMedia, deleteMedia,
     resetToDefaults
   } = useData();
   const { logout } = useAuth();
@@ -300,6 +290,14 @@ const CMSDashboard: React.FC = () => {
                   />
                   <label className="text-sm text-gray-700">Nécessite une validation</label>
                 </div>
+                
+                {/* Image Upload */}
+                <ImageUpload
+                  currentImage={product.imageUrl}
+                  onImageChange={(imageUrl) => updateProduct(product.id, { ...product, imageUrl })}
+                  label="Image du produit"
+                  className="mt-3"
+                />
                 <div className="flex gap-2">
                   <button
                     onClick={() => {
@@ -417,6 +415,13 @@ const CMSDashboard: React.FC = () => {
               rows={3}
             />
           </div>
+          <div className="md:col-span-2">
+            <ImageUpload
+              currentImage={clinicInfo.heroImage}
+              onImageChange={(imageUrl) => updateClinicInfo({ ...clinicInfo, heroImage: imageUrl })}
+              label="Image héro de la page d'accueil"
+            />
+          </div>
         </div>
       </div>
 
@@ -468,6 +473,13 @@ const CMSDashboard: React.FC = () => {
                     className="w-full border border-gray-200 rounded px-3 py-2"
                     rows={3}
                     placeholder="Biographie"
+                  />
+                  
+                  {/* Image Upload */}
+                  <ImageUpload
+                    currentImage={member.imageUrl}
+                    onImageChange={(imageUrl) => updateTeamMember(member.id, { ...member, imageUrl })}
+                    label="Photo de profil"
                   />
                   
                   {/* CV Section */}
@@ -721,10 +733,8 @@ const CMSDashboard: React.FC = () => {
             {activeTab === 'products' && renderProducts()}
             {activeTab === 'content' && renderContent()}
             {activeTab === 'media' && (
-              <div className="text-center py-12">
-                <Image size={48} className="mx-auto text-gray-300 mb-4" />
-                <h3 className="text-lg font-semibold text-gray-600 mb-2">Gestion des médias</h3>
-                <p className="text-gray-500">Fonctionnalité en cours de développement</p>
+              <div>
+                <MediaManager />
               </div>
             )}
             {activeTab === 'settings' && (

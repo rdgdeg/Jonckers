@@ -100,7 +100,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                 <img src="https://cdn.pixabay.com/photo/2018/05/11/08/11/dog-3389729_640.jpg" alt="Consultation" className="w-full h-full object-cover" />
+                 <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=1000" alt="Consultation vétérinaire" className="w-full h-full object-cover" />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
 
              </div>

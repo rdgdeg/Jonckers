@@ -74,7 +74,7 @@ const ServiceDetail: React.FC = () => {
              <div className="bg-white rounded-2xl overflow-hidden mb-10 shadow-lg">
                 <div className="h-64 md:h-96 w-full bg-slate-100 relative">
                     {/* Updated image to show veterinarian hands as requested */}
-                    <img src="https://cdn.pixabay.com/photo/2018/05/11/08/11/dog-3389729_1280.jpg" alt="Vétérinaire examinant un animal" className="w-full h-full object-cover" />
+                    <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=2000" alt="Vétérinaire examinant un animal" className="w-full h-full object-cover" />
                 </div>
              </div>
 

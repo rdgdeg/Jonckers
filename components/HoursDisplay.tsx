@@ -102,11 +102,11 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
   return (
     <div>
       <h4 className="text-white font-semibold mb-6 tracking-wide text-sm uppercase">Horaires d'ouverture</h4>
-      <div className="space-y-3 text-sm">
+      <div className="space-y-2 text-sm">
         {clinicInfo.hours.map((h, i) => (
-          <div key={i} className="flex justify-between items-center pb-2 border-b border-slate-800 last:border-0">
-            <span className="text-slate-300">{h.day}</span>
-            <span className={`font-medium ${h.hours === 'Fermé' ? 'text-red-400' : 'text-white'}`}>
+          <div key={i} className="flex justify-between items-center py-1">
+            <span className="text-slate-300 min-w-0 flex-shrink-0">{h.day}</span>
+            <span className={`font-medium text-right ml-4 ${h.hours === 'Fermé' ? 'text-red-400' : 'text-white'}`}>
               {h.hours}
             </span>
           </div>
@@ -116,11 +116,11 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
       {showConsultations && (
         <div className="mt-6 pt-4 border-t border-slate-700">
           <h5 className="text-slate-300 font-medium mb-3 text-xs uppercase tracking-wide">Consultations sur RDV</h5>
-          <div className="space-y-2 text-xs">
+          <div className="space-y-1 text-xs">
             {clinicInfo.consultationHours.slice(0, 5).map((h, i) => (
-              <div key={i} className="flex justify-between">
-                <span className="text-slate-400">{h.day}</span>
-                <span className="text-slate-200">{h.hours}</span>
+              <div key={i} className="flex justify-between items-center">
+                <span className="text-slate-400 min-w-0 flex-shrink-0">{h.day}</span>
+                <span className="text-slate-200 text-right ml-4">{h.hours}</span>
               </div>
             ))}
           </div>

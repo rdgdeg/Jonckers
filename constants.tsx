@@ -45,7 +45,7 @@ export const DEFAULT_CLINIC_INFO: ClinicInfo = {
   ],
   heroTitle: "Médecine vétérinaire d'excellence et de proximité.",
   heroSubtitle: "Nous allions expertise médicale de pointe et approche humaine pour garantir la meilleure qualité de vie à vos compagnons.",
-  heroImage: "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg"
+  heroImage: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000"
 };
 
 export const DEFAULT_SERVICES: Service[] = [
@@ -157,7 +157,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
     name: "Dr. Frederic Jonckers",
     role: "Vétérinaire Fondateur",
     bio: "Fondateur de la clinique, il apporte plus de 25 ans d'expérience en médecine vétérinaire. Passionné par la chirurgie des tissus mous et la médecine interne, il assure la direction médicale de l'établissement.",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=500",
     cv: {
       education: [
         "Doctorat en Médecine Vétérinaire - Université de Liège (1998)",
@@ -186,7 +186,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
     name: "Dr. Laurence Thoumsin",
     role: "Vétérinaire Associée",
     bio: "Spécialisée en imagerie médicale et en dermatologie, elle assure des diagnostics précis avec douceur. Son expertise en échographie et radiologie permet des diagnostics de pointe.",
-    imageUrl: "https://cdn.pixabay.com/photo/2020/04/18/08/33/doctor-5058699_640.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=500",
     cv: {
       education: [
         "Doctorat en Médecine Vétérinaire - Université de Liège (2005)",
@@ -216,7 +216,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
     name: "Sophie Martin",
     role: "Assistante Vétérinaire (ASV)",
     bio: "Le sourire à l'accueil et la douceur au chenil. Sophie veille au confort de vos animaux hospitalisés et assiste nos vétérinaires dans tous les soins quotidiens.",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_640.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1594824804732-ca8db7d1457c?auto=format&fit=crop&q=80&w=500",
     cv: {
       education: [
         "Certificat d'Assistante Vétérinaire - Institut de Formation Vétérinaire de Namur (2015)",
@@ -248,7 +248,7 @@ export const DEFAULT_BLOG_POSTS: BlogPost[] = [
     excerpt: "Comment protéger efficacement votre chien et votre chat contre les parasites externes ce printemps.",
     date: "15 Mai 2024",
     category: "Prévention",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_640.jpg"
+    imageUrl: "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&q=80&w=600"
   },
   {
     id: "nutrition-senior",
@@ -256,7 +256,7 @@ export const DEFAULT_BLOG_POSTS: BlogPost[] = [
     excerpt: "Les besoins nutritionnels changent avec l'âge. Découvrez nos conseils pour garder votre vieux compagnon en forme.",
     date: "02 Avril 2024",
     category: "Nutrition",
-    imageUrl: "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg"
+    imageUrl: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&q=80&w=600"
   },
   {
     id: "identification",
@@ -264,7 +264,7 @@ export const DEFAULT_BLOG_POSTS: BlogPost[] = [
     excerpt: "L'identification est obligatoire mais surtout vitale pour retrouver votre animal en cas de perte.",
     date: "20 Mars 2024",
     category: "Législation",
-    imageUrl: "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg"
+    imageUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=600"
   }
 ];
 
@@ -274,7 +274,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Croquettes Chien Adulte - 12kg",
     description: "Alimentation complète et équilibrée pour chiens adultes de taille moyenne.",
     price: 64.99,
-    imageUrl: "/images/products/dog-food.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&q=80&w=500",
     category: "Alimentation",
     requiresValidation: false,
     stock: 25,
@@ -285,7 +285,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Croquettes Chat Stérilisé - 4kg",
     description: "Formule spéciale pour le maintien du poids de forme des chats stérilisés.",
     price: 32.50,
-    imageUrl: "/images/products/cat-food.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&q=80&w=500",
     category: "Alimentation",
     requiresValidation: false,
     stock: 18,
@@ -296,7 +296,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "NexGard Spectra (Sur ordonnance)",
     description: "Protection complète contre les puces, tiques et vers. Délivrance uniquement après validation vétérinaire.",
     price: 0,
-    imageUrl: "/images/products/nexgard.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&q=80&w=500",
     category: "Médicaments",
     requiresValidation: true,
     stock: 0,
@@ -307,7 +307,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Complément Articulations",
     description: "Aide au soutien de la mobilité pour les chiens âgés.",
     price: 24.90,
-    imageUrl: "/images/products/joint-supplement.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=500",
     category: "Soins",
     requiresValidation: false,
     stock: 12,
@@ -318,7 +318,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Kit Hygiène Dentaire",
     description: "Brosse à dents et dentifrice spécialement conçus pour les chiens et chats.",
     price: 15.90,
-    imageUrl: "/images/products/dental-care.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=500",
     category: "Soins",
     requiresValidation: false,
     stock: 8,
@@ -329,7 +329,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Collier Anti-Puces",
     description: "Protection longue durée contre les puces et tiques pour chiens.",
     price: 19.99,
-    imageUrl: "/images/products/flea-collar.jpg",
+    imageUrl: "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&fit=crop&q=80&w=500",
     category: "Accessoires",
     requiresValidation: false,
     stock: 15,

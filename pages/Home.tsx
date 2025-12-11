@@ -93,10 +93,7 @@ const Home: React.FC = () => {
              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                  <img src="https://cdn.pixabay.com/photo/2018/05/11/08/11/dog-3389729_640.jpg" alt="Consultation" className="w-full h-full object-cover" />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                 <div className="absolute bottom-8 left-8 text-white">
-                    <p className="font-bold text-2xl">Dr. Frédéric Jonckers</p>
-                    <p className="opacity-90">Vétérinaire fondateur</p>
-                 </div>
+
              </div>
              {/* Decorative pattern */}
              <div className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 bg-blue-50 rounded-full"></div>

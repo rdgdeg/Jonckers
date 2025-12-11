@@ -154,7 +154,7 @@ export const DEFAULT_SERVICES: Service[] = [
 export const DEFAULT_TEAM: TeamMember[] = [
   {
     id: "frederic-jonckers",
-    name: "Dr. Frédéric Jonckers",
+    name: "Dr. Frederic Jonckers",
     role: "Vétérinaire Fondateur",
     bio: "Fondateur de la clinique, il apporte plus de 25 ans d'expérience en médecine vétérinaire. Passionné par la chirurgie des tissus mous et la médecine interne, il assure la direction médicale de l'établissement.",
     imageUrl: "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg",

@@ -1,20 +1,89 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Clinique Vétérinaire Jonckers-Thoumsin
 
-# Run and deploy your AI Studio app
+Site web moderne pour la clinique vétérinaire Jonckers-Thoumsin à Chièvres.
 
-This contains everything you need to run your app locally.
+## 🚀 Déploiement sur Vercel
 
-View your app in AI Studio: https://ai.studio/apps/drive/1_MWlUHHa90vejW59OWjHQuTqBdd3N4m_
+### Prérequis
+- Node.js 18+ 
+- Compte Vercel
 
-## Run Locally
+### Instructions de déploiement
 
-**Prerequisites:**  Node.js
+1. **Connecter le repository à Vercel**
+   - Aller sur [vercel.com](https://vercel.com)
+   - Importer le projet depuis GitHub
+   - Vercel détectera automatiquement qu'il s'agit d'un projet Vite
 
+2. **Configuration automatique**
+   - Build Command: `npm ci && npm run build`
+   - Output Directory: `dist`
+   - Install Command: `npm ci`
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+3. **Variables d'environnement (optionnel)**
+   - `GEMINI_API_KEY` : Clé API Gemini (si utilisée)
+
+### Résolution des problèmes de page blanche
+
+Si vous obtenez une page blanche après déploiement :
+
+1. **Vérifier les logs de build**
+   - Aller dans l'onglet "Functions" de votre projet Vercel
+   - Vérifier qu'il n'y a pas d'erreurs de build
+
+2. **Vérifier la console du navigateur**
+   - Ouvrir les outils de développement (F12)
+   - Regarder s'il y a des erreurs JavaScript
+
+3. **Forcer un nouveau déploiement**
+   - Dans Vercel, aller dans "Deployments"
+   - Cliquer sur "Redeploy" sur le dernier déploiement
+
+## 🛠 Développement Local
+
+1. **Installation**
+   ```bash
+   npm install
+   ```
+
+2. **Développement**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build de production**
+   ```bash
+   npm run build
+   ```
+
+4. **Preview du build**
+   ```bash
+   npm run preview
+   ```
+
+5. **Vérification des types**
+   ```bash
+   npm run type-check
+   ```
+
+## 📁 Structure du projet
+
+```
+├── components/          # Composants React réutilisables
+├── contexts/           # Contextes React (Auth, Data)
+├── pages/             # Pages de l'application
+├── constants.tsx      # Données par défaut
+├── types.ts          # Types TypeScript
+├── App.tsx           # Composant principal
+├── index.tsx         # Point d'entrée
+├── index.html        # Template HTML
+└── vercel.json       # Configuration Vercel
+```
+
+## 🔧 Technologies utilisées
+
+- **React 19** avec TypeScript
+- **React Router** pour la navigation
+- **Tailwind CSS** pour le styling
+- **Vite** pour le build
+- **Lucide React** pour les icônes

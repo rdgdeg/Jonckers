@@ -25,6 +25,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 };
 
 const App: React.FC = () => {
+  console.log("Rendering App component");
   return (
     <DataProvider>
       <AuthProvider>
@@ -45,13 +46,13 @@ const App: React.FC = () => {
 
               {/* Admin Routes */}
               <Route path="/admin" element={<AdminLogin />} />
-              <Route 
-                path="/admin/dashboard" 
+              <Route
+                path="/admin/dashboard"
                 element={
                   <ProtectedRoute>
                     <AdminDashboard />
                   </ProtectedRoute>
-                } 
+                }
               />
             </Routes>
           </Layout>

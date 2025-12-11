@@ -4,6 +4,7 @@ import { Menu, X, Phone, MapPin, Facebook, Instagram, Lock, Clock, ShoppingBag, 
 import { useData } from '../contexts/DataContext';
 import { useCart } from '../contexts/CartContext';
 import Cart from './Cart';
+import HoursDisplay from './HoursDisplay';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,6 +56,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/shop" className={`${isActive("/shop")} flex items-center gap-1`}><ShoppingBag size={16}/> Boutique</Link>
               <Link to="/blog" className={isActive("/blog")}>Conseils</Link>
               <Link to="/contact" className={isActive("/contact")}>Contact</Link>
+              <Link to="/horaires" className={isActive("/horaires")}>Horaires</Link>
               
               {/* Cart Button */}
               <button
@@ -111,6 +113,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/shop" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Boutique</Link>
               <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Conseils</Link>
               <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Contact</Link>
+              <Link to="/horaires" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Horaires</Link>
               <a 
                 href={clinicInfo.tipawLink}
                 target="_blank"
@@ -180,17 +183,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
 
           {/* Hours */}
-          <div>
-            <h4 className="text-white font-semibold mb-6 tracking-wide text-sm uppercase">Horaires</h4>
-            <ul className="space-y-2 text-sm">
-              {clinicInfo.hours.map((h, i) => (
-                <li key={i} className="flex justify-between border-b border-slate-800 pb-2 mb-2 last:border-0">
-                  <span>{h.day}</span>
-                  <span className="text-slate-200">{h.hours}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <HoursDisplay variant="footer" />
         </div>
         <div className="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600 gap-4">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">

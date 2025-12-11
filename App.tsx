@@ -7,6 +7,7 @@ import Team from './pages/Team';
 import TeamMemberDetail from './pages/TeamMember';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import PracticalInfo from './pages/PracticalInfo';
 import Shop from './pages/Shop';
 import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
@@ -52,6 +53,7 @@ const App: React.FC = () => {
                 <Route path="/order-request/:productId" element={<OrderRequest />} />
                 <Route path="/request-confirmation/:orderId" element={<OrderConfirmation />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/horaires" element={<PracticalInfo />} />
                 <Route path="/legal" element={<Legal />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
 

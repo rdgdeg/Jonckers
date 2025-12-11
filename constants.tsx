@@ -45,7 +45,7 @@ export const DEFAULT_CLINIC_INFO: ClinicInfo = {
   ],
   heroTitle: "Médecine vétérinaire d'excellence et de proximité.",
   heroSubtitle: "Nous allions expertise médicale de pointe et approche humaine pour garantir la meilleure qualité de vie à vos compagnons.",
-  heroImage: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000"
+  heroImage: "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg"
 };
 
 export const DEFAULT_SERVICES: Service[] = [
@@ -157,21 +157,21 @@ export const DEFAULT_TEAM: TeamMember[] = [
     name: "Dr. Frédérique Jonckers",
     role: "Vétérinaire Associée",
     bio: "Fondatrice de la clinique, passionnée par la chirurgie des tissus mous et la médecine interne depuis plus de 25 ans.",
-    imageUrl: "https://placehold.co/400x500/e2e8f0/1e293b?text=Photo+à+venir"
+    imageUrl: "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg"
   },
   {
     id: "laurence-thoumsin",
     name: "Dr. Laurence Thoumsin",
     role: "Vétérinaire Associée",
     bio: "Spécialisée en imagerie médicale et en dermatologie, elle assure des diagnostics précis avec douceur.",
-    imageUrl: "https://placehold.co/400x500/e2e8f0/1e293b?text=Photo+à+venir"
+    imageUrl: "https://cdn.pixabay.com/photo/2020/04/18/08/33/doctor-5058699_640.jpg"
   },
   {
     id: "sophie-martin",
     name: "Sophie Martin",
     role: "Assistante Vétérinaire (ASV)",
     bio: "Le sourire à l'accueil et la douceur au chenil. Sophie veille au confort de vos animaux hospitalisés.",
-    imageUrl: "https://placehold.co/400x500/e2e8f0/1e293b?text=Photo+à+venir"
+    imageUrl: "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_640.jpg"
   }
 ];
 
@@ -182,7 +182,7 @@ export const DEFAULT_BLOG_POSTS: BlogPost[] = [
     excerpt: "Comment protéger efficacement votre chien et votre chat contre les parasites externes ce printemps.",
     date: "15 Mai 2024",
     category: "Prévention",
-    imageUrl: "https://picsum.photos/id/169/600/400"
+    imageUrl: "https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_640.jpg"
   },
   {
     id: "nutrition-senior",
@@ -190,7 +190,7 @@ export const DEFAULT_BLOG_POSTS: BlogPost[] = [
     excerpt: "Les besoins nutritionnels changent avec l'âge. Découvrez nos conseils pour garder votre vieux compagnon en forme.",
     date: "02 Avril 2024",
     category: "Nutrition",
-    imageUrl: "https://picsum.photos/id/1025/600/400"
+    imageUrl: "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg"
   },
   {
     id: "identification",
@@ -198,7 +198,7 @@ export const DEFAULT_BLOG_POSTS: BlogPost[] = [
     excerpt: "L'identification est obligatoire mais surtout vitale pour retrouver votre animal en cas de perte.",
     date: "20 Mars 2024",
     category: "Législation",
-    imageUrl: "https://picsum.photos/id/40/600/400"
+    imageUrl: "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg"
   }
 ];
 
@@ -208,7 +208,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Croquettes Chien Adulte - 12kg",
     description: "Alimentation complète et équilibrée pour chiens adultes de taille moyenne.",
     price: "64.99 €",
-    imageUrl: "https://images.unsplash.com/photo-1589924691195-41432c84c161?auto=format&fit=crop&q=80&w=500",
+    imageUrl: "https://cdn.pixabay.com/photo/2017/05/26/18/54/dog-food-2346176_640.jpg",
     category: "Alimentation",
     requiresValidation: false
   },
@@ -217,7 +217,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Croquettes Chat Stérilisé - 4kg",
     description: "Formule spéciale pour le maintien du poids de forme des chats stérilisés.",
     price: "32.50 €",
-    imageUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=500",
+    imageUrl: "https://cdn.pixabay.com/photo/2017/02/15/12/12/cat-2068462_640.jpg",
     category: "Alimentation",
     requiresValidation: false
   },
@@ -226,7 +226,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "NexGard Spectra (Sur ordonnance)",
     description: "Protection complète contre les puces, tiques et vers. Délivrance uniquement après validation vétérinaire.",
     price: "Sur demande",
-    imageUrl: "https://images.unsplash.com/photo-1607569708745-f26d36e23292?auto=format&fit=crop&q=80&w=500",
+    imageUrl: "https://cdn.pixabay.com/photo/2016/07/11/15/43/dog-1509205_640.jpg",
     category: "Médicaments",
     requiresValidation: true
   },
@@ -235,7 +235,7 @@ export const DEFAULT_PRODUCTS: Product[] = [
     name: "Complément Articulations",
     description: "Aide au soutien de la mobilité pour les chiens âgés.",
     price: "24.90 €",
-    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=500",
+    imageUrl: "https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_640.jpg",
     category: "Soins",
     requiresValidation: false
   }

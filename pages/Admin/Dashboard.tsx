@@ -11,15 +11,15 @@ import { TeamMember, BlogPost } from '../../types';
 
 // Mock images for "Media Library" simulation
 const STOCK_IMAGES = [
-    "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2000",
-    "https://images.unsplash.com/photo-1632236542152-7d226a79895c?auto=format&fit=crop&q=80&w=1000",
-    "https://picsum.photos/id/64/400/500",
-    "https://picsum.photos/id/338/400/500",
-    "https://picsum.photos/id/342/400/500",
-    "https://picsum.photos/id/169/600/400",
-    "https://picsum.photos/id/1025/600/400",
-    "https://picsum.photos/id/40/600/400"
+    "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg",
+    "https://cdn.pixabay.com/photo/2018/05/11/08/11/dog-3389729_640.jpg",
+    "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg",
+    "https://cdn.pixabay.com/photo/2020/04/18/08/33/doctor-5058699_640.jpg",
+    "https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_640.jpg",
+    "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313_640.jpg",
+    "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg",
+    "https://cdn.pixabay.com/photo/2017/05/26/18/54/dog-food-2346176_640.jpg",
+    "https://cdn.pixabay.com/photo/2017/02/15/12/12/cat-2068462_640.jpg"
 ];
 
 const AdminDashboard: React.FC = () => {
@@ -397,7 +397,7 @@ const AdminDashboard: React.FC = () => {
             name: "Nouveau Membre",
             role: "Vétérinaire",
             bio: "Biographie à rédiger...",
-            imageUrl: "https://picsum.photos/400/500"
+            imageUrl: "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg"
         };
         addTeamMember(newMember);
         setEditId(newMember.id);
@@ -475,7 +475,7 @@ const AdminDashboard: React.FC = () => {
             excerpt: "Résumé...",
             date: new Date().toLocaleDateString('fr-FR'),
             category: "Général",
-            imageUrl: "https://picsum.photos/600/400"
+            imageUrl: "https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_640.jpg"
         };
         addBlogPost(newPost);
         setEditId(newPost.id);

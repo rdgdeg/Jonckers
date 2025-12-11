@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   const featuredTeam = team.slice(0, 3);
 
   // Fallbacks in case data is missing
-  const heroImage = clinicInfo.heroImage || "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2000";
+  const heroImage = clinicInfo.heroImage || "https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg";
   const heroTitle = clinicInfo.heroTitle || "Médecine vétérinaire d'excellence et de proximité.";
   const heroSubtitle = clinicInfo.heroSubtitle || "Nous allions expertise médicale de pointe et approche humaine pour garantir la meilleure qualité de vie à vos compagnons.";
 
@@ -91,7 +91,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                 <img src="https://images.unsplash.com/photo-1632236542152-7d226a79895c?auto=format&fit=crop&q=80&w=1000" alt="Consultation" className="w-full h-full object-cover" />
+                 <img src="https://cdn.pixabay.com/photo/2018/05/11/08/11/dog-3389729_640.jpg" alt="Consultation" className="w-full h-full object-cover" />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                  <div className="absolute bottom-8 left-8 text-white">
                     <p className="font-bold text-2xl">Dr. Jonckers</p>

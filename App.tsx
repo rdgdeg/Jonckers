@@ -19,6 +19,7 @@ import AdminDashboard from './pages/Admin/CMSDashboard';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { DataProvider } from './contexts/DataContext';
 import { CartProvider } from './contexts/CartContext';
+import { ToastProvider } from './components/ToastProvider';
 import ScrollToTop from './components/ScrollToTop';
 
 // Protected Route Component
@@ -36,9 +37,10 @@ const App: React.FC = () => {
     <DataProvider>
       <AuthProvider>
         <CartProvider>
-          <Router>
-            <ScrollToTop />
-            <Layout>
+          <ToastProvider>
+            <Router>
+              <ScrollToTop />
+              <Layout>
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />
@@ -70,9 +72,10 @@ const App: React.FC = () => {
               </Routes>
             </Layout>
           </Router>
-        </CartProvider>
-      </AuthProvider>
-    </DataProvider>
+        </ToastProvider>
+      </CartProvider>
+    </AuthProvider>
+  </DataProvider>
   );
 };
 

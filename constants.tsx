@@ -135,18 +135,23 @@ export const DEFAULT_SERVICES: Service[] = [
   },
   {
     id: "colombophilie",
-    title: "Colombophilie",
+    title: "Colombophilie & NAC",
     iconName: "Bird",
-    shortDescription: "Suivi spécialisé et vaccinations pour les pigeons voyageurs.",
-    fullDescription: "Service spécialisé pour les amateurs de colombophilie. Nous assurons le suivi sanitaire de votre colonie, les vaccinations obligatoires et les analyses microscopiques.",
+    shortDescription: "Suivi spécialisé pour pigeons voyageurs et soins pour Nouveaux Animaux de Compagnie.",
+    fullDescription: "Service spécialisé pour les amateurs de colombophilie et propriétaires de NAC (Nouveaux Animaux de Compagnie). Nous assurons le suivi sanitaire de vos pigeons, les vaccinations obligatoires et proposons des consultations adaptées pour lapins, furets, oiseaux, rongeurs et reptiles.",
     features: [
-      "Analyses de fientes",
+      "Analyses de fientes pour pigeons",
       "Vaccinations paramyxovirose",
-      "Traitements respiratoires",
-      "Certificats de bonne santé"
+      "Consultations NAC (lapins, furets, oiseaux)",
+      "Soins pour rongeurs et reptiles",
+      "Traitements respiratoires spécialisés",
+      "Certificats de bonne santé",
+      "Conseils en nutrition NAC"
     ],
     faqs: [
-      { question: "Quand vacciner mes pigeons ?", answer: "Le schéma vaccinal idéal se discute en consultation selon la saison de concours." }
+      { question: "Quand vacciner mes pigeons ?", answer: "Le schéma vaccinal idéal se discute en consultation selon la saison de concours." },
+      { question: "Prenez-vous en charge tous les NAC ?", answer: "Oui, nous soignons lapins, furets, oiseaux, rongeurs et reptiles. Chaque espèce nécessite des soins spécifiques que nous maîtrisons." },
+      { question: "Faut-il un rendez-vous spécial pour les NAC ?", answer: "Oui, les consultations NAC nécessitent plus de temps. Précisez l'espèce lors de la prise de rendez-vous." }
     ]
   }
 ];
@@ -157,7 +162,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
     name: "Dr. Frederic Jonckers",
     role: "Vétérinaire Fondateur",
     bio: "Fondateur de la clinique, il apporte plus de 25 ans d'expérience en médecine vétérinaire. Passionné par la chirurgie des tissus mous et la médecine interne, il assure la direction médicale de l'établissement.",
-    imageUrl: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=500",
+    imageUrl: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=80&w=500",
     cv: {
       education: [
         "Doctorat en Médecine Vétérinaire - Université de Liège (1998)",
@@ -186,7 +191,7 @@ export const DEFAULT_TEAM: TeamMember[] = [
     name: "Dr. Laurence Thoumsin",
     role: "Vétérinaire Associée",
     bio: "Spécialisée en imagerie médicale et en dermatologie, elle assure des diagnostics précis avec douceur. Son expertise en échographie et radiologie permet des diagnostics de pointe.",
-    imageUrl: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=500",
+    imageUrl: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&q=80&w=500",
     cv: {
       education: [
         "Doctorat en Médecine Vétérinaire - Université de Liège (2005)",
@@ -334,6 +339,61 @@ export const DEFAULT_PRODUCTS: Product[] = [
     requiresValidation: false,
     stock: 15,
     sku: "FLEA-COLLAR"
+  },
+  {
+    id: "frontline-combo",
+    name: "Frontline Combo (Sur ordonnance)",
+    description: "Traitement anti-puces et anti-tiques efficace. Pipettes pour chiens et chats. Délivrance après validation vétérinaire.",
+    price: 0,
+    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=500",
+    category: "Médicaments",
+    requiresValidation: true,
+    stock: 0,
+    sku: "FRONTLINE-COMBO"
+  },
+  {
+    id: "bravecto-chien",
+    name: "Bravecto Chien (Sur ordonnance)",
+    description: "Protection 3 mois contre puces et tiques. Comprimé à croquer. Prescription vétérinaire obligatoire.",
+    price: 0,
+    imageUrl: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&q=80&w=500",
+    category: "Médicaments",
+    requiresValidation: true,
+    stock: 0,
+    sku: "BRAVECTO-DOG"
+  },
+  {
+    id: "milbemax-vermifuge",
+    name: "Milbemax Vermifuge (Sur ordonnance)",
+    description: "Vermifuge large spectre pour chiens et chats. Traitement et prévention des vers. Sur prescription uniquement.",
+    price: 0,
+    imageUrl: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=80&w=500",
+    category: "Médicaments",
+    requiresValidation: true,
+    stock: 0,
+    sku: "MILBEMAX"
+  },
+  {
+    id: "drontal-plus",
+    name: "Drontal Plus (Sur ordonnance)",
+    description: "Vermifuge complet contre tous types de vers intestinaux. Comprimés sécables. Validation vétérinaire requise.",
+    price: 0,
+    imageUrl: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=500",
+    category: "Médicaments",
+    requiresValidation: true,
+    stock: 0,
+    sku: "DRONTAL-PLUS"
+  },
+  {
+    id: "spray-antiparasitaire",
+    name: "Spray Antiparasitaire Environnement",
+    description: "Traitement de l'habitat contre puces et acariens. Efficace sur tapis, coussins et niches.",
+    price: 16.90,
+    imageUrl: "https://images.unsplash.com/photo-1585435557343-3b092031d4c1?auto=format&fit=crop&q=80&w=500",
+    category: "Soins",
+    requiresValidation: false,
+    stock: 20,
+    sku: "SPRAY-ENV"
   }
 ];
 
@@ -374,5 +434,63 @@ export const DEFAULT_MEDIA: MediaFile[] = [
     type: "image",
     size: 189440,
     uploadDate: new Date().toISOString()
+  }
+];
+
+export const DEFAULT_TESTIMONIALS = [
+  {
+    id: '1',
+    name: 'Marie Dubois',
+    petName: 'Luna',
+    petType: 'Chat',
+    rating: 5,
+    comment: 'Excellent accueil et soins de qualité. Le Dr Jonckers a pris le temps d\'expliquer le traitement de Luna. Je recommande vivement !',
+    date: '2024-03-15',
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+    isApproved: true
+  },
+  {
+    id: '2',
+    name: 'Pierre Martin',
+    petName: 'Rex',
+    petType: 'Chien',
+    rating: 5,
+    comment: 'Intervention chirurgicale parfaitement réalisée. L\'équipe est très professionnelle et rassurante. Rex va beaucoup mieux !',
+    date: '2024-03-10',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+    isApproved: true
+  },
+  {
+    id: '3',
+    name: 'Sophie Laurent',
+    petName: 'Mimi',
+    petType: 'Lapin',
+    rating: 5,
+    comment: 'Première fois avec un NAC, le Dr Thoumsin nous a parfaitement conseillés. Clinique moderne et équipe à l\'écoute.',
+    date: '2024-03-05',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+    isApproved: true
+  },
+  {
+    id: '4',
+    name: 'Jean Dupont',
+    petName: 'Bella',
+    petType: 'Chien',
+    rating: 5,
+    comment: 'Service d\'urgence impeccable ! Bella a été prise en charge immédiatement. Merci à toute l\'équipe pour leur professionnalisme.',
+    date: '2024-02-28',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    isApproved: true
+  },
+  {
+    id: '5',
+    name: 'Amélie Rousseau',
+    petName: 'Félix',
+    petType: 'Chat',
+    rating: 5,
+    comment: 'Très satisfaite du suivi post-opératoire. L\'équipe est disponible et répond à toutes nos questions. Félix se porte à merveille !',
+    date: '2024-02-20',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
+    isApproved: true
   }
 ];

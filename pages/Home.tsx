@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Calendar, ShieldCheck, Activity, Clock } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { ICON_MAP } from '../constants';
+import AnimatedSection from '../components/AnimatedSection';
+import AnimatedCounter from '../components/AnimatedCounter';
+import TestimonialsCarousel from '../components/TestimonialsCarousel';
+import FAQSection from '../components/FAQSection';
+import LiveStats from '../components/LiveStats';
+import Newsletter from '../components/Newsletter';
 
 const Home: React.FC = () => {
   const { clinicInfo, services, team } = useData();
@@ -98,18 +104,17 @@ const Home: React.FC = () => {
       {/* Introduction */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative">
+          <AnimatedSection animation="fadeInLeft" className="order-2 lg:order-1 relative">
              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                  <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&q=80&w=1000" alt="Consultation vétérinaire" className="w-full h-full object-cover" />
                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-
              </div>
              {/* Decorative pattern */}
              <div className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 bg-blue-50 rounded-full"></div>
              <div className="absolute -z-10 -top-6 -left-6 w-32 h-32 bg-slate-50 rounded-full"></div>
-          </div>
+          </AnimatedSection>
           
-          <div className="order-1 lg:order-2">
+          <AnimatedSection animation="fadeInRight" delay={200} className="order-1 lg:order-2">
             <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-4">Notre Philosophie</h4>
             <h2 className="text-4xl font-bold text-slate-900 mb-6 leading-tight">Une approche médicale rigoureuse, <br/>une écoute attentive.</h2>
             <p className="text-slate-600 mb-6 text-lg leading-relaxed">
@@ -122,56 +127,62 @@ const Home: React.FC = () => {
             </p>
             <div className="flex gap-4">
                 <div className="flex flex-col">
-                    <span className="text-3xl font-bold text-primary">25+</span>
+                    <AnimatedCounter end={25} suffix="+" className="text-3xl text-primary" />
                     <span className="text-sm text-slate-500 font-medium uppercase">Années d'expérience</span>
                 </div>
                 <div className="w-px bg-slate-200 h-12"></div>
                 <div className="flex flex-col">
-                    <span className="text-3xl font-bold text-primary">5000+</span>
+                    <AnimatedCounter end={5000} suffix="+" className="text-3xl text-primary" />
                     <span className="text-sm text-slate-500 font-medium uppercase">Patients suivis</span>
                 </div>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Services Grid - Modernized */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-20">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Nos Domaines d'Expertise</h2>
             <p className="text-slate-600 text-lg">Des services vétérinaires complets pour assurer la santé de vos animaux à chaque étape de leur vie.</p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => {
+            {services.map((service, index) => {
                const Icon = ICON_MAP[service.iconName] || Star;
                return (
-                <Link key={service.id} to={`/services/${service.id}`} className="group bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <Icon size={32} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
-                  <p className="text-slate-500 mb-6 leading-relaxed">{service.shortDescription}</p>
-                  <span className="text-slate-900 font-semibold text-sm flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                    En savoir plus <ArrowRight size={16} className="ml-2 text-primary" />
-                  </span>
-                </Link>
+                <AnimatedSection 
+                  key={service.id} 
+                  animation="fadeInUp" 
+                  delay={index * 100}
+                >
+                  <Link to={`/services/${service.id}`} className="group bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 hover:-translate-y-1 block h-full">
+                    <div className="w-16 h-16 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      <Icon size={32} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                    <p className="text-slate-500 mb-6 leading-relaxed">{service.shortDescription}</p>
+                    <span className="text-slate-900 font-semibold text-sm flex items-center group-hover:translate-x-2 transition-transform duration-300">
+                      En savoir plus <ArrowRight size={16} className="ml-2 text-primary" />
+                    </span>
+                  </Link>
+                </AnimatedSection>
             )})}
           </div>
           
-          <div className="mt-16 text-center">
+          <AnimatedSection delay={600} className="mt-16 text-center">
             <Link to="/services" className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-blue-50 hover:bg-blue-100 transition">
               Voir tous nos services
             </Link>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Team Preview - Clean Cards */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+          <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-16">
             <div>
               <h4 className="text-primary font-bold uppercase tracking-widest text-sm mb-2">L'Équipe Médicale</h4>
               <h2 className="text-3xl font-bold text-slate-900">Vos vétérinaires dévoués</h2>
@@ -179,11 +190,16 @@ const Home: React.FC = () => {
             <Link to="/team" className="hidden md:flex items-center text-slate-600 hover:text-primary font-medium transition group">
               Rencontrer toute l'équipe <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
-          </div>
+          </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredTeam.map((member) => (
-              <div key={member.id} className="group relative">
+            {featuredTeam.map((member, index) => (
+              <AnimatedSection 
+                key={member.id} 
+                animation="scaleIn" 
+                delay={index * 150}
+                className="group relative"
+              >
                 <div className="aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 mb-4">
                   <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500" />
                 </div>
@@ -191,11 +207,23 @@ const Home: React.FC = () => {
                   <h3 className="text-xl font-bold text-slate-900">{member.name}</h3>
                   <p className="text-primary font-medium text-sm">{member.role}</p>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Live Stats Section */}
+      <LiveStats />
+
+      {/* Testimonials Section */}
+      <TestimonialsCarousel />
+
+      {/* FAQ Section */}
+      <FAQSection />
+
+      {/* Newsletter Section */}
+      <Newsletter />
 
       {/* CTA Section */}
       <section className="py-20 bg-slate-900 text-center relative overflow-hidden">

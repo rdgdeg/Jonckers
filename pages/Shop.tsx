@@ -52,11 +52,29 @@ const Shop: React.FC = () => {
     <div className="py-12 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
         
-        <div className="mb-12 text-center max-w-2xl mx-auto">
+        <div className="mb-12 text-center max-w-3xl mx-auto">
             <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Boutique Vétérinaire</h1>
-            <p className="text-slate-600">
+            <p className="text-slate-600 mb-6">
                 Découvrez notre sélection de produits de qualité pour la santé et le bien-être de vos animaux.
             </p>
+            
+            {/* Delivery Info */}
+            <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-xl p-6 border border-blue-100">
+              <h3 className="font-bold text-slate-900 mb-3">🚚 Modalités de récupération</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="bg-white rounded-lg p-4 border border-blue-100">
+                  <h4 className="font-semibold text-primary mb-2">📦 Retrait à la clinique</h4>
+                  <p className="text-slate-600">Récupérez vos commandes directement à la clinique aux heures d'ouverture. Gratuit pour toutes les commandes.</p>
+                </div>
+                <div className="bg-white rounded-lg p-4 border border-green-100">
+                  <h4 className="font-semibold text-green-600 mb-2">🚛 Livraison locale</h4>
+                  <p className="text-slate-600">Livraison possible dans un rayon de 15km. Gratuite à partir de 50€, sinon 5€ de frais de port.</p>
+                </div>
+              </div>
+              <p className="text-xs text-slate-500 mt-4">
+                ⚠️ Les produits sur ordonnance nécessitent une validation vétérinaire préalable
+              </p>
+            </div>
         </div>
 
         {/* Filters and Search */}

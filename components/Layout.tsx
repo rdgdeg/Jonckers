@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MapPin, Facebook, Instagram, Lock, Clock, ShoppingBag, ShoppingCart } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Facebook, Instagram, Lock, Clock, ShoppingBag, ShoppingCart, Search } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { useCart } from '../contexts/CartContext';
 import Cart from './Cart';
 import HoursDisplay from './HoursDisplay';
+import SearchModal from './SearchModal';
+import ChatWidget from './ChatWidget';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const { clinicInfo } = useData();
   const { getTotalItems } = useCart();
@@ -58,6 +61,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/contact" className={isActive("/contact")}>Contact</Link>
               <Link to="/horaires" className={isActive("/horaires")}>Horaires</Link>
               
+              {/* Search Button */}
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 text-slate-600 hover:text-primary transition"
+                title="Rechercher"
+              >
+                <Search size={20} />
+              </button>
+              
               {/* Cart Button */}
               <button
                 onClick={() => setIsCartOpen(true)}
@@ -82,7 +94,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </nav>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center gap-4">
+            <div className="md:hidden flex items-center gap-2">
+                {/* Mobile Search Button */}
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="p-2 text-slate-600 hover:text-primary transition"
+                >
+                  <Search size={20} />
+                </button>
+                
                 {/* Mobile Cart Button */}
                 <button
                   onClick={() => setIsCartOpen(true)}
@@ -134,6 +154,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* Cart Sidebar */}
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      
+      {/* Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      
+      {/* Chat Widget */}
+      <ChatWidget />
 
       {/* Footer - Minimalist & Professional */}
       <footer className="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">

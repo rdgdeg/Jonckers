@@ -111,6 +111,18 @@ export interface MediaFile {
   uploadDate: string;
 }
 
+export interface Testimonial {
+  id: string;
+  name: string;
+  petName: string;
+  petType: string;
+  rating: number;
+  comment: string;
+  date: string;
+  avatar?: string;
+  isApproved: boolean;
+}
+
 export interface DataContextType {
   clinicInfo: ClinicInfo;
   services: Service[];
@@ -120,6 +132,7 @@ export interface DataContextType {
   orders: Order[];
   pages: Page[];
   media: MediaFile[];
+  testimonials: Testimonial[];
   updateClinicInfo: (info: ClinicInfo) => void;
   updateService: (id: string, service: Service) => void;
   updateTeamMember: (id: string, member: TeamMember) => void;
@@ -138,6 +151,9 @@ export interface DataContextType {
   deletePage: (id: string) => void;
   addMedia: (media: MediaFile) => void;
   deleteMedia: (id: string) => void;
+  addTestimonial: (testimonial: Testimonial) => void;
+  updateTestimonial: (id: string, testimonial: Testimonial) => void;
+  deleteTestimonial: (id: string) => void;
   resetToDefaults: () => void;
 }
 

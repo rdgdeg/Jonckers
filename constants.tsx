@@ -154,9 +154,9 @@ export const DEFAULT_SERVICES: Service[] = [
 export const DEFAULT_TEAM: TeamMember[] = [
   {
     id: "fred-jonckers",
-    name: "Dr. Frédérique Jonckers",
-    role: "Vétérinaire Associée",
-    bio: "Fondatrice de la clinique, passionnée par la chirurgie des tissus mous et la médecine interne depuis plus de 25 ans.",
+    name: "Dr. Frédéric Jonckers",
+    role: "Vétérinaire Associé",
+    bio: "Fondateur de la clinique, passionné par la chirurgie des tissus mous et la médecine interne depuis plus de 25 ans.",
     imageUrl: "https://cdn.pixabay.com/photo/2017/05/04/16/37/meeting-2284501_640.jpg"
   },
   {

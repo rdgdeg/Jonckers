@@ -153,6 +153,16 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Clean up old data with incorrect name
+  React.useEffect(() => {
+    const teamData = localStorage.getItem('team');
+    if (teamData && teamData.includes('Frédérique')) {
+      console.log('Cleaning up old team data with incorrect name');
+      localStorage.removeItem('team');
+      setTeam(DEFAULT_TEAM);
+    }
+  }, []);
+
   return (
     <DataContext.Provider value={{
       clinicInfo,

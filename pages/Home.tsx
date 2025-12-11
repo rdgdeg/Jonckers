@@ -6,6 +6,15 @@ import { ICON_MAP } from '../constants';
 
 const Home: React.FC = () => {
   const { clinicInfo, services, team } = useData();
+  
+  // Force update team data if old name is still present
+  React.useEffect(() => {
+    const teamData = localStorage.getItem('team');
+    if (teamData && teamData.includes('Frédérique')) {
+      localStorage.removeItem('team');
+      window.location.reload();
+    }
+  }, []);
 
   const featuredTeam = team.slice(0, 3);
 

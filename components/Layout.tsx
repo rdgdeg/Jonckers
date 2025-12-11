@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MapPin, Facebook, Instagram, Lock, Clock, ShoppingBag } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Facebook, Instagram, Lock, Clock, ShoppingBag, ShoppingCart } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
+import { useCart } from '../contexts/CartContext';
+import Cart from './Cart';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
   const { clinicInfo } = useData();
+  const { getTotalItems } = useCart();
 
   const isActive = (path: string) => location.pathname === path ? "text-primary font-semibold" : "text-slate-600 hover:text-primary font-medium";
   const isAdmin = location.pathname.startsWith('/admin');
@@ -51,6 +55,20 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/shop" className={`${isActive("/shop")} flex items-center gap-1`}><ShoppingBag size={16}/> Boutique</Link>
               <Link to="/blog" className={isActive("/blog")}>Conseils</Link>
               <Link to="/contact" className={isActive("/contact")}>Contact</Link>
+              
+              {/* Cart Button */}
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 text-slate-600 hover:text-primary transition"
+              >
+                <ShoppingCart size={20} />
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </button>
+              
               <a 
                 href={clinicInfo.tipawLink} 
                 target="_blank" 
@@ -63,6 +81,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center gap-4">
+                {/* Mobile Cart Button */}
+                <button
+                  onClick={() => setIsCartOpen(true)}
+                  className="relative p-2 text-slate-600 hover:text-primary transition"
+                >
+                  <ShoppingCart size={20} />
+                  {getTotalItems() > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                      {getTotalItems()}
+                    </span>
+                  )}
+                </button>
+                
                 <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-800 p-2 hover:bg-slate-50 rounded-lg transition">
                 {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
                 </button>
@@ -97,6 +128,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <main className="flex-grow">
         {children}
       </main>
+
+      {/* Cart Sidebar */}
+      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
       {/* Footer - Minimalist & Professional */}
       <footer className="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">

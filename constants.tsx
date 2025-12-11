@@ -7,7 +7,7 @@ import {
   Bird,
   LucideIcon
 } from 'lucide-react';
-import { Service, TeamMember, BlogPost, ClinicInfo, Product } from './types';
+import { Service, TeamMember, BlogPost, ClinicInfo, Product, Page, MediaFile } from './types';
 
 // Helper to map string names back to icons for display
 export const ICON_MAP: Record<string, LucideIcon> = {
@@ -207,36 +207,106 @@ export const DEFAULT_PRODUCTS: Product[] = [
     id: "kibble-adult-12kg",
     name: "Croquettes Chien Adulte - 12kg",
     description: "Alimentation complète et équilibrée pour chiens adultes de taille moyenne.",
-    price: "64.99 €",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/05/26/18/54/dog-food-2346176_640.jpg",
+    price: 64.99,
+    imageUrl: "/images/products/dog-food.jpg",
     category: "Alimentation",
-    requiresValidation: false
+    requiresValidation: false,
+    stock: 25,
+    sku: "DOG-FOOD-12KG"
   },
   {
     id: "cat-food-sterilized-4kg",
     name: "Croquettes Chat Stérilisé - 4kg",
     description: "Formule spéciale pour le maintien du poids de forme des chats stérilisés.",
-    price: "32.50 €",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/02/15/12/12/cat-2068462_640.jpg",
+    price: 32.50,
+    imageUrl: "/images/products/cat-food.jpg",
     category: "Alimentation",
-    requiresValidation: false
+    requiresValidation: false,
+    stock: 18,
+    sku: "CAT-FOOD-4KG"
   },
   {
     id: "antiparasitic-dog",
     name: "NexGard Spectra (Sur ordonnance)",
     description: "Protection complète contre les puces, tiques et vers. Délivrance uniquement après validation vétérinaire.",
-    price: "Sur demande",
-    imageUrl: "https://cdn.pixabay.com/photo/2016/07/11/15/43/dog-1509205_640.jpg",
+    price: 0,
+    imageUrl: "/images/products/nexgard.jpg",
     category: "Médicaments",
-    requiresValidation: true
+    requiresValidation: true,
+    stock: 0,
+    sku: "NEXGARD-SPEC"
   },
   {
     id: "joint-supplement",
     name: "Complément Articulations",
     description: "Aide au soutien de la mobilité pour les chiens âgés.",
-    price: "24.90 €",
-    imageUrl: "https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_640.jpg",
+    price: 24.90,
+    imageUrl: "/images/products/joint-supplement.jpg",
     category: "Soins",
-    requiresValidation: false
+    requiresValidation: false,
+    stock: 12,
+    sku: "JOINT-SUPP"
+  },
+  {
+    id: "dental-care",
+    name: "Kit Hygiène Dentaire",
+    description: "Brosse à dents et dentifrice spécialement conçus pour les chiens et chats.",
+    price: 15.90,
+    imageUrl: "/images/products/dental-care.jpg",
+    category: "Soins",
+    requiresValidation: false,
+    stock: 8,
+    sku: "DENTAL-KIT"
+  },
+  {
+    id: "flea-collar",
+    name: "Collier Anti-Puces",
+    description: "Protection longue durée contre les puces et tiques pour chiens.",
+    price: 19.99,
+    imageUrl: "/images/products/flea-collar.jpg",
+    category: "Accessoires",
+    requiresValidation: false,
+    stock: 15,
+    sku: "FLEA-COLLAR"
+  }
+];
+
+export const DEFAULT_PAGES: Page[] = [
+  {
+    id: "home",
+    title: "Accueil",
+    slug: "home",
+    content: "Page d'accueil de la clinique vétérinaire",
+    metaDescription: "Clinique vétérinaire Jonckers-Thoumsin à Chièvres - Soins de qualité pour vos animaux",
+    isPublished: true,
+    lastModified: new Date().toISOString()
+  },
+  {
+    id: "about",
+    title: "À propos",
+    slug: "about",
+    content: "Notre histoire et notre philosophie de soins vétérinaires",
+    metaDescription: "Découvrez l'histoire et la philosophie de la clinique vétérinaire Jonckers-Thoumsin",
+    isPublished: true,
+    lastModified: new Date().toISOString()
+  }
+];
+
+export const DEFAULT_MEDIA: MediaFile[] = [
+  {
+    id: "hero-image",
+    name: "hero-veterinaire.jpg",
+    url: "/images/hero-veterinaire.jpg",
+    type: "image",
+    size: 245760,
+    uploadDate: new Date().toISOString()
+  },
+  {
+    id: "consultation-image",
+    name: "consultation.jpg",
+    url: "/images/consultation.jpg",
+    type: "image",
+    size: 189440,
+    uploadDate: new Date().toISOString()
   }
 ];

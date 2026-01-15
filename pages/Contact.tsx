@@ -64,42 +64,49 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="mt-16 pt-10 border-t border-slate-800">
-                <h3 className="font-bold text-xl mb-8 flex items-center gap-3">
-                    <Clock size={24} className="text-primary"/> 
+                <h3 className="font-bold text-2xl mb-8 flex items-center gap-3 text-white">
+                    <Clock size={28} className="text-primary"/> 
                     Nos Horaires
                 </h3>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 mb-5 pb-2 border-b border-slate-700">
-                            <ShoppingBag size={18} className="text-primary"/>
-                            <h4 className="font-bold text-base text-white uppercase tracking-wide">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* Magasin / Accueil */}
+                    <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                        <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-700">
+                            <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                                <ShoppingBag size={20} className="text-primary"/>
+                            </div>
+                            <h4 className="font-bold text-lg text-white">
                                 Magasin / Accueil
                             </h4>
                         </div>
-                        <div className="space-y-3">
+                        <div className="space-y-1">
                             {clinicInfo.hours.map((h, i) => (
-                                <div key={i} className="flex justify-between items-center py-2 px-3 hover:bg-white/5 rounded-lg transition-colors">
-                                    <span className="font-medium text-slate-300 min-w-[90px]">{h.day}</span>
-                                    <span className={`text-sm font-semibold ${h.hours === 'Fermé' ? 'text-red-400' : 'text-slate-200'}`}>
+                                <div key={i} className="flex justify-between items-center py-3 border-b border-slate-800 last:border-0">
+                                    <span className="text-slate-300 font-medium">{h.day}</span>
+                                    <span className={`font-bold ${h.hours === 'Fermé' ? 'text-red-400' : 'text-white'}`}>
                                         {h.hours}
                                     </span>
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 mb-5 pb-2 border-b border-slate-700">
-                            <Stethoscope size={18} className="text-primary"/>
-                            <h4 className="font-bold text-base text-white uppercase tracking-wide">
+                    
+                    {/* Consultations */}
+                    <div className="bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                        <div className="flex items-center gap-3 mb-6 pb-3 border-b border-slate-700">
+                            <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                <Stethoscope size={20} className="text-green-400"/>
+                            </div>
+                            <h4 className="font-bold text-lg text-white">
                                 Consultations (RDV)
                             </h4>
                         </div>
-                        <div className="space-y-3">
+                        <div className="space-y-1">
                             {clinicInfo.consultationHours?.map((h, i) => (
-                                <div key={i} className="flex justify-between items-center py-2 px-3 hover:bg-white/5 rounded-lg transition-colors">
-                                    <span className="font-medium text-slate-300 min-w-[90px]">{h.day}</span>
-                                    <span className={`text-sm font-semibold ${h.hours === 'Fermé' ? 'text-red-400' : 'text-slate-200'}`}>
+                                <div key={i} className="flex justify-between items-center py-3 border-b border-slate-800 last:border-0">
+                                    <span className="text-slate-300 font-medium">{h.day}</span>
+                                    <span className={`font-bold ${h.hours === 'Fermé' ? 'text-red-400' : 'text-white'}`}>
                                         {h.hours}
                                     </span>
                                 </div>

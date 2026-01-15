@@ -15,26 +15,28 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
 
   if (variant === 'page') {
     return (
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+      <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-sm border border-gray-100 p-8">
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-            <Clock className="text-blue-600" size={24} />
+          <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+            <Clock className="text-white" size={24} />
           </div>
-          <h3 className="text-xl font-bold text-gray-900">Nos Horaires</h3>
+          <h3 className="text-2xl font-bold text-gray-900">Nos Horaires</h3>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Horaires d'ouverture */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 mb-4 pb-3 border-b-2 border-blue-100">
-              <Calendar size={18} className="text-blue-600" />
-              <h4 className="font-bold text-gray-900 text-lg">Magasin / Accueil</h4>
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Calendar size={16} className="text-blue-600" />
+              </div>
+              <h4 className="font-bold text-gray-900">Magasin / Accueil</h4>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {clinicInfo.hours.map((h, i) => (
-                <div key={i} className="flex justify-between items-center py-2 px-4 hover:bg-blue-50 rounded-lg transition-colors">
-                  <span className="font-medium text-gray-700 min-w-[100px]">{h.day}</span>
-                  <span className={`font-semibold text-right ${h.hours === 'Fermé' ? 'text-red-600' : 'text-gray-900'}`}>
+                <div key={i} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
+                  <span className="text-gray-600 font-medium">{h.day}</span>
+                  <span className={`font-bold ${h.hours === 'Fermé' ? 'text-red-500' : 'text-gray-900'}`}>
                     {h.hours}
                   </span>
                 </div>
@@ -43,16 +45,18 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
           </div>
 
           {/* Horaires de consultation */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 mb-4 pb-3 border-b-2 border-green-100">
-              <Calendar size={18} className="text-green-600" />
-              <h4 className="font-bold text-gray-900 text-lg">Consultations (RDV)</h4>
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                <Calendar size={16} className="text-green-600" />
+              </div>
+              <h4 className="font-bold text-gray-900">Consultations (RDV)</h4>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {clinicInfo.consultationHours.map((h, i) => (
-                <div key={i} className="flex justify-between items-center py-2 px-4 hover:bg-green-50 rounded-lg transition-colors">
-                  <span className="font-medium text-gray-700 min-w-[100px]">{h.day}</span>
-                  <span className={`font-semibold text-right ${h.hours === 'Fermé' ? 'text-red-600' : 'text-gray-900'}`}>
+                <div key={i} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0">
+                  <span className="text-gray-600 font-medium">{h.day}</span>
+                  <span className={`font-bold ${h.hours === 'Fermé' ? 'text-red-500' : 'text-gray-900'}`}>
                     {h.hours}
                   </span>
                 </div>
@@ -61,10 +65,10 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
           </div>
         </div>
 
-        <div className="mt-8 p-5 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl border border-blue-100">
-          <p className="text-sm text-gray-800 leading-relaxed">
-            <strong className="text-blue-700">Important :</strong> Les consultations se font uniquement sur rendez-vous. 
-            Pour les urgences en dehors des heures d'ouverture, appelez le <strong className="text-gray-900">{clinicInfo.phone}</strong>.
+        <div className="mt-6 p-4 bg-blue-600 text-white rounded-xl">
+          <p className="text-sm leading-relaxed">
+            <strong>Important :</strong> Les consultations se font uniquement sur rendez-vous. 
+            Pour les urgences en dehors des heures d'ouverture, appelez le <strong>{clinicInfo.phone}</strong>.
           </p>
         </div>
       </div>

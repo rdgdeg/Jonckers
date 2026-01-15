@@ -16,7 +16,8 @@ import {
   Image,
   CheckCircle,
   AlertCircle,
-  Home
+  Home,
+  Stethoscope
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MediaManager from '../../components/MediaManager';
@@ -981,7 +982,7 @@ const CMSDashboard: React.FC = () => {
                       activeTab === 'services' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    <Settings size={20} />
+                    <Stethoscope size={20} />
                     Services
                   </button>
                 </li>

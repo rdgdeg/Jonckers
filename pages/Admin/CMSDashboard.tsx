@@ -25,6 +25,7 @@ import ImageUpload from '../../components/ImageUpload';
 const CMSDashboard: React.FC = () => {
   const { 
     clinicInfo, updateClinicInfo,
+    services, updateService,
     team, updateTeamMember, addTeamMember, deleteTeamMember,
     blogPosts, updateBlogPost, addBlogPost, deleteBlogPost,
     products, updateProduct, addProduct, deleteProduct,
@@ -33,7 +34,7 @@ const CMSDashboard: React.FC = () => {
   } = useData();
   const { logout } = useAuth();
   
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'orders' | 'products' | 'content' | 'blog' | 'media' | 'settings'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'orders' | 'products' | 'content' | 'services' | 'blog' | 'media' | 'settings'>('dashboard');
   const [editId, setEditId] = useState<string | null>(null);
   const [toast, setToast] = useState<{message: string, type: 'success' | 'error'} | null>(null);
 
@@ -623,6 +624,125 @@ const CMSDashboard: React.FC = () => {
     </div>
   );
 
+  const renderServices = () => (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-gray-900">Gestion des services (Expertise)</h2>
+      
+      <div className="space-y-6">
+        {services.map((service) => (
+          <div key={service.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            {editId === service.id ? (
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Titre du service</label>
+                  <input
+                    type="text"
+                    value={service.title}
+                    onChange={(e) => updateService(service.id, { ...service, title: e.target.value })}
+                    className="w-full border border-gray-200 rounded px-3 py-2"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Description courte</label>
+                  <textarea
+                    value={service.shortDescription}
+                    onChange={(e) => updateService(service.id, { ...service, shortDescription: e.target.value })}
+                    className="w-full border border-gray-200 rounded px-3 py-2"
+                    rows={2}
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Description complète</label>
+                  <textarea
+                    value={service.fullDescription}
+                    onChange={(e) => updateService(service.id, { ...service, fullDescription: e.target.value })}
+                    className="w-full border border-gray-200 rounded px-3 py-2"
+                    rows={4}
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Prestations (une par ligne)</label>
+                  <textarea
+                    value={service.features.join('\n')}
+                    onChange={(e) => updateService(service.id, { ...service, features: e.target.value.split('\n').filter(f => f.trim()) })}
+                    className="w-full border border-gray-200 rounded px-3 py-2 font-mono text-sm"
+                    rows={5}
+                    placeholder="Ex: Consultations vaccinales"
+                  />
+                </div>
+                
+                <ImageUpload
+                  currentImage={service.imageUrl || "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=2000"}
+                  onImageChange={(imageUrl) => updateService(service.id, { ...service, imageUrl })}
+                  label="Image du service (affichée sur la page de détail)"
+                />
+                
+                <div className="flex gap-2 pt-4 border-t">
+                  <button
+                    onClick={() => {
+                      setEditId(null);
+                      showToast("Service mis à jour");
+                    }}
+                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition flex items-center gap-2"
+                  >
+                    <Save size={16} />
+                    Sauvegarder
+                  </button>
+                  <button
+                    onClick={() => setEditId(null)}
+                    className="border border-gray-200 px-4 py-2 rounded hover:bg-gray-50 transition"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
+                    <p className="text-sm text-gray-500 mt-1">{service.shortDescription}</p>
+                  </div>
+                  <button
+                    onClick={() => setEditId(service.id)}
+                    className="text-blue-500 hover:text-blue-700 p-2"
+                  >
+                    <Edit size={18} />
+                  </button>
+                </div>
+                
+                {service.imageUrl && (
+                  <div className="mb-4">
+                    <img 
+                      src={service.imageUrl} 
+                      alt={service.title}
+                      className="w-full h-48 object-cover rounded-lg"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk0YTNiOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPg==';
+                      }}
+                    />
+                  </div>
+                )}
+                
+                <div className="text-sm text-gray-600">
+                  <strong>Prestations:</strong>
+                  <ul className="list-disc list-inside mt-2 space-y-1">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   const renderBlog = () => (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
@@ -856,6 +976,17 @@ const CMSDashboard: React.FC = () => {
                 </li>
                 <li>
                   <button
+                    onClick={() => setActiveTab('services')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition ${
+                      activeTab === 'services' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Settings size={20} />
+                    Services
+                  </button>
+                </li>
+                <li>
+                  <button
                     onClick={() => setActiveTab('blog')}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition ${
                       activeTab === 'blog' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'
@@ -897,6 +1028,7 @@ const CMSDashboard: React.FC = () => {
             {activeTab === 'orders' && renderOrders()}
             {activeTab === 'products' && renderProducts()}
             {activeTab === 'content' && renderContent()}
+            {activeTab === 'services' && renderServices()}
             {activeTab === 'blog' && renderBlog()}
             {activeTab === 'media' && (
               <div>

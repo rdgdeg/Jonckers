@@ -53,6 +53,7 @@ export const DEFAULT_SERVICES: Service[] = [
     id: "medecine-generale",
     title: "Médecine Générale",
     iconName: "Stethoscope",
+    imageUrl: "https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&q=80&w=2000",
     shortDescription: "Consultations préventives et curatives pour chiens, chats et NAC.",
     fullDescription: "Notre service de médecine générale couvre l'ensemble des besoins de santé de votre compagnon. De la vaccination annuelle au diagnostic de pathologies complexes, nous assurons un suivi rigoureux. Nous mettons un point d'honneur sur la médecine préventive pour assurer une longue vie en bonne santé à vos animaux.",
     features: [
@@ -71,6 +72,7 @@ export const DEFAULT_SERVICES: Service[] = [
     id: "chirurgie",
     title: "Chirurgie",
     iconName: "Scissors",
+    imageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2000",
     shortDescription: "Interventions de convenance et chirurgies des tissus mous.",
     fullDescription: "Notre bloc opératoire est équipé pour réaliser des interventions chirurgicales dans des conditions optimales de sécurité (anesthésie gazeuse, monitoring). Nous pratiquons les chirurgies de convenance ainsi que des chirurgies plus complexes des tissus mous.",
     features: [
@@ -89,6 +91,7 @@ export const DEFAULT_SERVICES: Service[] = [
     id: "urgences",
     title: "Urgences",
     iconName: "Siren",
+    imageUrl: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&q=80&w=2000",
     shortDescription: "Service de garde et prise en charge rapide des urgences vitales.",
     fullDescription: "En dehors des heures d'ouverture, un service de garde est assuré pour les urgences vitales. N'hésitez pas à nous contacter avant de vous déplacer afin que nous puissions préparer l'arrivée de votre animal.",
     features: [
@@ -105,6 +108,7 @@ export const DEFAULT_SERVICES: Service[] = [
     id: "imagerie",
     title: "Imagerie Médicale",
     iconName: "Scan",
+    imageUrl: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=2000",
     shortDescription: "Radiographie numérique et échographie pour des diagnostics précis.",
     fullDescription: "L'imagerie médicale est indispensable pour établir un diagnostic précis. Nous disposons d'un appareil de radiographie numérique haute fréquence et d'un échographe performant.",
     features: [
@@ -121,6 +125,7 @@ export const DEFAULT_SERVICES: Service[] = [
     id: "hospitalisation",
     title: "Hospitalisation",
     iconName: "Bed",
+    imageUrl: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?auto=format&fit=crop&q=80&w=2000",
     shortDescription: "Chenil confortable pour le rétablissement de vos animaux.",
     fullDescription: "Notre espace d'hospitalisation est conçu pour minimiser le stress de vos compagnons. Chiens et chats sont séparés pour plus de tranquillité. Nous assurons une surveillance continue et l'administration des traitements.",
     features: [
@@ -137,6 +142,7 @@ export const DEFAULT_SERVICES: Service[] = [
     id: "colombophilie",
     title: "Colombophilie & NAC",
     iconName: "Bird",
+    imageUrl: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?auto=format&fit=crop&q=80&w=2000",
     shortDescription: "Suivi spécialisé pour pigeons voyageurs et soins pour Nouveaux Animaux de Compagnie.",
     fullDescription: "Service spécialisé pour les amateurs de colombophilie et propriétaires de NAC (Nouveaux Animaux de Compagnie). Nous assurons le suivi sanitaire de vos pigeons, les vaccinations obligatoires et proposons des consultations adaptées pour lapins, furets, oiseaux, rongeurs et reptiles.",
     features: [

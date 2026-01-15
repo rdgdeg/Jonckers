@@ -20,6 +20,7 @@ export interface Service {
   shortDescription: string;
   fullDescription: string;
   iconName: string; // Changed from LucideIcon to string for storage
+  imageUrl?: string; // Image for service detail page
   features: string[];
   faqs: { question: string; answer: string }[];
 }

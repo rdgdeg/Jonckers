@@ -1,13 +1,14 @@
 # Configuration pour hébergement o2switch (Apache)
 # Site : Clinique Vétérinaire Jonckers-Thoumsin
 # Type : React SPA avec HashRouter
+# Emplacement : ldmedia.info/veto/
 
 # ============================================
 # 1. ACTIVATION DU MODULE REWRITE
 # ============================================
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
+    RewriteBase /veto/
 
     # Redirection HTTPS (sécurité)
     RewriteCond %{HTTPS} off

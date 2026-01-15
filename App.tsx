@@ -8,17 +8,12 @@ import TeamMemberDetail from './pages/TeamMember';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import PracticalInfo from './pages/PracticalInfo';
-import Shop from './pages/Shop';
-import Checkout from './pages/Checkout';
-import OrderConfirmation from './pages/OrderConfirmation';
-import OrderRequest from './pages/OrderRequest';
 import Legal from './pages/Legal';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import AdminLogin from './pages/Admin/Login';
 import AdminDashboard from './pages/Admin/CMSDashboard';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { DataProvider } from './contexts/DataContext';
-import { CartProvider } from './contexts/CartContext';
 import { ToastProvider } from './components/ToastProvider';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -36,12 +31,11 @@ const App: React.FC = () => {
   return (
     <DataProvider>
       <AuthProvider>
-        <CartProvider>
-          <ToastProvider>
-            <Router>
-              <ScrollToTop />
-              <Layout>
-              <Routes>
+        <ToastProvider>
+          <Router>
+            <ScrollToTop />
+            <Layout>
+            <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />
                 <Route path="/services" element={<Navigate to="/services/medecine-generale" replace />} />
@@ -49,11 +43,6 @@ const App: React.FC = () => {
                 <Route path="/team" element={<Team />} />
                 <Route path="/team/:memberId" element={<TeamMemberDetail />} />
                 <Route path="/blog" element={<Blog />} />
-                <Route path="/shop" element={<Shop />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
-                <Route path="/order-request/:productId" element={<OrderRequest />} />
-                <Route path="/request-confirmation/:orderId" element={<OrderConfirmation />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/horaires" element={<PracticalInfo />} />
                 <Route path="/legal" element={<Legal />} />
@@ -73,9 +62,8 @@ const App: React.FC = () => {
             </Layout>
           </Router>
         </ToastProvider>
-      </CartProvider>
-    </AuthProvider>
-  </DataProvider>
+      </AuthProvider>
+    </DataProvider>
   );
 };
 

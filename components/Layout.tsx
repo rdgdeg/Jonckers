@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, MapPin, Facebook, Instagram, Lock, Clock, ShoppingBag, ShoppingCart, Search } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Facebook, Lock, Clock, Search } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
-import { useCart } from '../contexts/CartContext';
-import Cart from './Cart';
 import HoursDisplay from './HoursDisplay';
 import SearchModal from './SearchModal';
 import ChatWidget from './ChatWidget';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const { clinicInfo } = useData();
-  const { getTotalItems } = useCart();
 
   const isActive = (path: string) => location.pathname === path ? "text-primary font-semibold" : "text-slate-600 hover:text-primary font-medium";
   const isAdmin = location.pathname.startsWith('/admin');
@@ -56,7 +52,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/" className={isActive("/")}>Accueil</Link>
               <Link to="/services" className={isActive("/services")}>Expertise</Link>
               <Link to="/team" className={isActive("/team")}>L'Équipe</Link>
-              <Link to="/shop" className={`${isActive("/shop")} flex items-center gap-1`}><ShoppingBag size={16}/> Boutique</Link>
               <Link to="/blog" className={isActive("/blog")}>Conseils</Link>
               <Link to="/contact" className={isActive("/contact")}>Contact</Link>
               <Link to="/horaires" className={isActive("/horaires")}>Horaires</Link>
@@ -68,19 +63,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 title="Rechercher"
               >
                 <Search size={20} />
-              </button>
-              
-              {/* Cart Button */}
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative p-2 text-slate-600 hover:text-primary transition"
-              >
-                <ShoppingCart size={20} />
-                {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-                    {getTotalItems()}
-                  </span>
-                )}
               </button>
               
               <a 
@@ -103,19 +85,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <Search size={20} />
                 </button>
                 
-                {/* Mobile Cart Button */}
-                <button
-                  onClick={() => setIsCartOpen(true)}
-                  className="relative p-2 text-slate-600 hover:text-primary transition"
-                >
-                  <ShoppingCart size={20} />
-                  {getTotalItems() > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-                      {getTotalItems()}
-                    </span>
-                  )}
-                </button>
-                
                 <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-800 p-2 hover:bg-slate-50 rounded-lg transition">
                 {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
                 </button>
@@ -130,7 +99,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <Link to="/" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Accueil</Link>
               <Link to="/services" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Expertise & Soins</Link>
               <Link to="/team" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Notre Équipe</Link>
-              <Link to="/shop" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Boutique</Link>
               <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Conseils</Link>
               <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Contact</Link>
               <Link to="/horaires" onClick={() => setIsMenuOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 hover:text-primary hover:bg-blue-50 transition">Horaires</Link>
@@ -152,9 +120,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         {children}
       </main>
 
-      {/* Cart Sidebar */}
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-      
       {/* Search Modal */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       
@@ -183,7 +148,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <ul className="space-y-3 text-sm">
               <li><Link to="/services" className="hover:text-white transition flex items-center gap-2"><span className="w-1 h-1 bg-primary rounded-full"></span> Nos Services</Link></li>
               <li><Link to="/team" className="hover:text-white transition flex items-center gap-2"><span className="w-1 h-1 bg-primary rounded-full"></span> L'Équipe</Link></li>
-              <li><Link to="/shop" className="hover:text-white transition flex items-center gap-2"><span className="w-1 h-1 bg-primary rounded-full"></span> Boutique</Link></li>
               <li><Link to="/blog" className="hover:text-white transition flex items-center gap-2"><span className="w-1 h-1 bg-primary rounded-full"></span> Actualités</Link></li>
               <li><Link to="/contact" className="hover:text-white transition flex items-center gap-2"><span className="w-1 h-1 bg-primary rounded-full"></span> Contact</Link></li>
             </ul>

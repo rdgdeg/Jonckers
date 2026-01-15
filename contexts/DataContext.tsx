@@ -6,9 +6,10 @@ import {
   DEFAULT_BLOG_POSTS,
   DEFAULT_PRODUCTS,
   DEFAULT_PAGES,
-  DEFAULT_MEDIA
+  DEFAULT_MEDIA,
+  DEFAULT_TESTIMONIALS
 } from '../constants';
-import { DataContextType, ClinicInfo, Service, TeamMember, BlogPost, Product, Order, Page, MediaFile } from '../types';
+import { DataContextType, ClinicInfo, Service, TeamMember, BlogPost, Product, Order, Page, MediaFile, Testimonial } from '../types';
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
@@ -75,6 +76,11 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return saved ? JSON.parse(saved) : DEFAULT_MEDIA;
   });
 
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
+    const saved = localStorage.getItem('testimonials');
+    return saved ? JSON.parse(saved) : DEFAULT_TESTIMONIALS;
+  });
+
   // Effects to save changes to LocalStorage
   useEffect(() => localStorage.setItem('clinicInfo', JSON.stringify(clinicInfo)), [clinicInfo]);
   useEffect(() => localStorage.setItem('services', JSON.stringify(services)), [services]);
@@ -84,6 +90,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   useEffect(() => localStorage.setItem('orders', JSON.stringify(orders)), [orders]);
   useEffect(() => localStorage.setItem('pages', JSON.stringify(pages)), [pages]);
   useEffect(() => localStorage.setItem('media', JSON.stringify(media)), [media]);
+  useEffect(() => localStorage.setItem('testimonials', JSON.stringify(testimonials)), [testimonials]);
 
   // Update Functions
   const updateClinicInfo = (info: ClinicInfo) => setClinicInfo(info);
@@ -138,6 +145,15 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
   
   const deleteMedia = (id: string) => setMedia(prev => prev.filter(m => m.id !== id));
 
+  // Testimonial functions
+  const addTestimonial = (testimonial: Testimonial) => setTestimonials(prev => [...prev, testimonial]);
+  
+  const updateTestimonial = (id: string, updatedTestimonial: Testimonial) => {
+    setTestimonials(prev => prev.map(t => t.id === id ? updatedTestimonial : t));
+  };
+  
+  const deleteTestimonial = (id: string) => setTestimonials(prev => prev.filter(t => t.id !== id));
+
   const resetToDefaults = () => {
     if (confirm("Êtes-vous sûr de vouloir réinitialiser tout le contenu du site ? Toutes vos modifications seront perdues.")) {
         setClinicInfo(DEFAULT_CLINIC_INFO);
@@ -148,6 +164,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setOrders([]);
         setPages(DEFAULT_PAGES);
         setMedia(DEFAULT_MEDIA);
+        setTestimonials(DEFAULT_TESTIMONIALS);
         localStorage.clear();
         window.location.reload();
     }
@@ -173,6 +190,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       orders,
       pages,
       media,
+      testimonials,
       updateClinicInfo,
       updateService,
       updateTeamMember,
@@ -191,6 +209,9 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       deletePage,
       addMedia,
       deleteMedia,
+      addTestimonial,
+      updateTestimonial,
+      deleteTestimonial,
       resetToDefaults
     }}>
       {children}

@@ -26,13 +26,14 @@ const CMSDashboard: React.FC = () => {
   const { 
     clinicInfo, updateClinicInfo,
     team, updateTeamMember, addTeamMember, deleteTeamMember,
+    blogPosts, updateBlogPost, addBlogPost, deleteBlogPost,
     products, updateProduct, addProduct, deleteProduct,
     orders, updateOrder,
     resetToDefaults
   } = useData();
   const { logout } = useAuth();
   
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'orders' | 'products' | 'content' | 'media' | 'settings'>('dashboard');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'orders' | 'products' | 'content' | 'blog' | 'media' | 'settings'>('dashboard');
   const [editId, setEditId] = useState<string | null>(null);
   const [toast, setToast] = useState<{message: string, type: 'success' | 'error'} | null>(null);
 
@@ -622,6 +623,159 @@ const CMSDashboard: React.FC = () => {
     </div>
   );
 
+  const renderBlog = () => (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold text-gray-900">Gestion des articles de blog</h2>
+        <button
+          onClick={() => {
+            const newPost = {
+              id: Date.now().toString(),
+              title: "Nouvel article",
+              excerpt: "Description de l'article...",
+              date: new Date().toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }),
+              category: "Conseils",
+              imageUrl: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=600"
+            };
+            addBlogPost(newPost);
+            setEditId(newPost.id);
+            showToast("Article ajouté avec succès");
+          }}
+          className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
+        >
+          <Plus size={20} />
+          Nouvel article
+        </button>
+      </div>
+      
+      <div className="grid grid-cols-1 gap-6">
+        {blogPosts.map((post) => (
+          <div key={post.id} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            {editId === post.id ? (
+              <div className="p-6 space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Titre de l'article</label>
+                  <input
+                    type="text"
+                    value={post.title}
+                    onChange={(e) => updateBlogPost(post.id, { ...post, title: e.target.value })}
+                    className="w-full border border-gray-200 rounded px-3 py-2"
+                    placeholder="Titre de l'article"
+                  />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Date de publication</label>
+                    <input
+                      type="text"
+                      value={post.date}
+                      onChange={(e) => updateBlogPost(post.id, { ...post, date: e.target.value })}
+                      className="w-full border border-gray-200 rounded px-3 py-2"
+                      placeholder="Ex: 15 Mai 2024"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Catégorie</label>
+                    <input
+                      type="text"
+                      value={post.category}
+                      onChange={(e) => updateBlogPost(post.id, { ...post, category: e.target.value })}
+                      className="w-full border border-gray-200 rounded px-3 py-2"
+                      placeholder="Ex: Prévention, Nutrition, etc."
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Résumé / Extrait</label>
+                  <textarea
+                    value={post.excerpt}
+                    onChange={(e) => updateBlogPost(post.id, { ...post, excerpt: e.target.value })}
+                    className="w-full border border-gray-200 rounded px-3 py-2"
+                    rows={4}
+                    placeholder="Résumé de l'article qui apparaîtra sur la page blog..."
+                  />
+                </div>
+                
+                <ImageUpload
+                  currentImage={post.imageUrl}
+                  onImageChange={(imageUrl) => updateBlogPost(post.id, { ...post, imageUrl })}
+                  label="Image de couverture"
+                />
+                
+                <div className="flex gap-2 pt-4 border-t">
+                  <button
+                    onClick={() => {
+                      setEditId(null);
+                      showToast("Article mis à jour");
+                    }}
+                    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition flex items-center gap-2"
+                  >
+                    <Save size={16} />
+                    Sauvegarder
+                  </button>
+                  <button
+                    onClick={() => setEditId(null)}
+                    className="border border-gray-200 px-4 py-2 rounded hover:bg-gray-50 transition"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (confirm("Êtes-vous sûr de vouloir supprimer cet article ?")) {
+                        deleteBlogPost(post.id);
+                        setEditId(null);
+                        showToast("Article supprimé");
+                      }
+                    }}
+                    className="ml-auto bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition flex items-center gap-2"
+                  >
+                    <Trash2 size={16} />
+                    Supprimer
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex">
+                <div className="w-64 h-48 flex-shrink-0">
+                  <img 
+                    src={post.imageUrl} 
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk0YTNiOCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPg==';
+                    }}
+                  />
+                </div>
+                <div className="flex-1 p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-2">
+                        {post.category}
+                      </span>
+                      <h3 className="text-xl font-bold text-gray-900">{post.title}</h3>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setEditId(post.id)}
+                        className="text-blue-500 hover:text-blue-700 p-2"
+                      >
+                        <Edit size={18} />
+                      </button>
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-500 mb-3">Publié le {post.date}</p>
+                  <p className="text-gray-700 line-clamp-2">{post.excerpt}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -702,6 +856,17 @@ const CMSDashboard: React.FC = () => {
                 </li>
                 <li>
                   <button
+                    onClick={() => setActiveTab('blog')}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition ${
+                      activeTab === 'blog' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'
+                    }`}
+                  >
+                    <FileText size={20} />
+                    Blog
+                  </button>
+                </li>
+                <li>
+                  <button
                     onClick={() => setActiveTab('media')}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition ${
                       activeTab === 'media' ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100'
@@ -732,6 +897,7 @@ const CMSDashboard: React.FC = () => {
             {activeTab === 'orders' && renderOrders()}
             {activeTab === 'products' && renderProducts()}
             {activeTab === 'content' && renderContent()}
+            {activeTab === 'blog' && renderBlog()}
             {activeTab === 'media' && (
               <div>
                 <MediaManager />

@@ -16,25 +16,25 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
   if (variant === 'page') {
     return (
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-8">
           <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
             <Clock className="text-blue-600" size={24} />
           </div>
           <h3 className="text-xl font-bold text-gray-900">Nos Horaires</h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Horaires d'ouverture */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-4 pb-3 border-b-2 border-blue-100">
               <Calendar size={18} className="text-blue-600" />
-              <h4 className="font-semibold text-gray-900">Magasin / Accueil</h4>
+              <h4 className="font-bold text-gray-900 text-lg">Magasin / Accueil</h4>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2">
               {clinicInfo.hours.map((h, i) => (
-                <div key={i} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                  <span className="font-medium text-gray-700">{h.day}</span>
-                  <span className={`font-semibold ${h.hours === 'Fermé' ? 'text-red-600' : 'text-gray-900'}`}>
+                <div key={i} className="flex justify-between items-center py-2 px-4 hover:bg-blue-50 rounded-lg transition-colors">
+                  <span className="font-medium text-gray-700 min-w-[100px]">{h.day}</span>
+                  <span className={`font-semibold text-right ${h.hours === 'Fermé' ? 'text-red-600' : 'text-gray-900'}`}>
                     {h.hours}
                   </span>
                 </div>
@@ -43,16 +43,16 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
           </div>
 
           {/* Horaires de consultation */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-4 pb-3 border-b-2 border-green-100">
               <Calendar size={18} className="text-green-600" />
-              <h4 className="font-semibold text-gray-900">Consultations (RDV)</h4>
+              <h4 className="font-bold text-gray-900 text-lg">Consultations (RDV)</h4>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2">
               {clinicInfo.consultationHours.map((h, i) => (
-                <div key={i} className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                  <span className="font-medium text-gray-700">{h.day}</span>
-                  <span className={`font-semibold ${h.hours === 'Fermé' ? 'text-red-600' : 'text-gray-900'}`}>
+                <div key={i} className="flex justify-between items-center py-2 px-4 hover:bg-green-50 rounded-lg transition-colors">
+                  <span className="font-medium text-gray-700 min-w-[100px]">{h.day}</span>
+                  <span className={`font-semibold text-right ${h.hours === 'Fermé' ? 'text-red-600' : 'text-gray-900'}`}>
                     {h.hours}
                   </span>
                 </div>
@@ -61,10 +61,10 @@ const HoursDisplay: React.FC<HoursDisplayProps> = ({
           </div>
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-          <p className="text-sm text-blue-800">
-            <strong>Important :</strong> Les consultations se font uniquement sur rendez-vous. 
-            Pour les urgences en dehors des heures d'ouverture, appelez le {clinicInfo.phone}.
+        <div className="mt-8 p-5 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl border border-blue-100">
+          <p className="text-sm text-gray-800 leading-relaxed">
+            <strong className="text-blue-700">Important :</strong> Les consultations se font uniquement sur rendez-vous. 
+            Pour les urgences en dehors des heures d'ouverture, appelez le <strong className="text-gray-900">{clinicInfo.phone}</strong>.
           </p>
         </div>
       </div>

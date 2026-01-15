@@ -64,31 +64,44 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="mt-16 pt-10 border-t border-slate-800">
-                <h3 className="font-bold text-lg mb-6 flex items-center gap-2"><Clock size={20}/> Nos Horaires</h3>
+                <h3 className="font-bold text-xl mb-8 flex items-center gap-3">
+                    <Clock size={24} className="text-primary"/> 
+                    Nos Horaires
+                </h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h4 className="font-bold text-sm mb-4 flex items-center gap-2 text-primary uppercase tracking-wide">
-                            <ShoppingBag size={16}/> Magasin / Accueil
-                        </h4>
-                        <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 mb-5 pb-2 border-b border-slate-700">
+                            <ShoppingBag size={18} className="text-primary"/>
+                            <h4 className="font-bold text-base text-white uppercase tracking-wide">
+                                Magasin / Accueil
+                            </h4>
+                        </div>
+                        <div className="space-y-3">
                             {clinicInfo.hours.map((h, i) => (
-                                <div key={i} className="flex flex-col sm:flex-row justify-between text-slate-400 text-sm">
-                                    <span className="font-medium text-slate-300">{h.day}</span>
-                                    <span>{h.hours}</span>
+                                <div key={i} className="flex justify-between items-center py-2 px-3 hover:bg-white/5 rounded-lg transition-colors">
+                                    <span className="font-medium text-slate-300 min-w-[90px]">{h.day}</span>
+                                    <span className={`text-sm font-semibold ${h.hours === 'Fermé' ? 'text-red-400' : 'text-slate-200'}`}>
+                                        {h.hours}
+                                    </span>
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <div>
-                         <h4 className="font-bold text-sm mb-4 flex items-center gap-2 text-primary uppercase tracking-wide">
-                            <Stethoscope size={16}/> Consultations (RDV)
-                        </h4>
-                        <div className="grid grid-cols-1 gap-3">
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 mb-5 pb-2 border-b border-slate-700">
+                            <Stethoscope size={18} className="text-primary"/>
+                            <h4 className="font-bold text-base text-white uppercase tracking-wide">
+                                Consultations (RDV)
+                            </h4>
+                        </div>
+                        <div className="space-y-3">
                             {clinicInfo.consultationHours?.map((h, i) => (
-                                <div key={i} className="flex flex-col sm:flex-row justify-between text-slate-400 text-sm">
-                                    <span className="font-medium text-slate-300">{h.day}</span>
-                                    <span>{h.hours}</span>
+                                <div key={i} className="flex justify-between items-center py-2 px-3 hover:bg-white/5 rounded-lg transition-colors">
+                                    <span className="font-medium text-slate-300 min-w-[90px]">{h.day}</span>
+                                    <span className={`text-sm font-semibold ${h.hours === 'Fermé' ? 'text-red-400' : 'text-slate-200'}`}>
+                                        {h.hours}
+                                    </span>
                                 </div>
                             ))}
                         </div>
